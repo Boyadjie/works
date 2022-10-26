@@ -65,7 +65,7 @@ projects.forEach((project) => {
     gsap.to(details, {
       duration: 1,
       display: "block",
-      height: percentToPixel(details, 150),
+      height: window.innerWidth > 990 ? 440 : percentToPixel(details, 150),
       padding: window.innerWidth > 990 ? 20 : 0,
     });
 
