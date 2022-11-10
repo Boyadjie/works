@@ -51,37 +51,46 @@ function percentToPixel(_elem, _perc) {
   return (_elem.parentElement.clientWidth / 100) * parseFloat(_perc);
 }
 
+function display(delay, details, toShow) {
+  delay = 1;
+  gsap.to(details, {
+    duration: 1,
+    display: "block",
+    height: window.innerWidth > 990 ? 440 : percentToPixel(details, 150),
+    padding: window.innerWidth > 990 ? 20 : 0,
+  });
+
+  for (let i = 0; i < toShow.length; i++) {
+    const element = toShow[i];
+
+    gsap.to(element, {
+      duration: 0.5,
+      delay,
+      display: "block",
+      opacity: 1,
+      y: 0,
+    });
+
+    delay += 0.1;
+  }
+}
+
 const projects = document.querySelectorAll("section");
 //  Show-Hide details
 projects.forEach((project) => {
   const title = project.querySelector("h2");
+  const img = project.querySelector("img");
   const details = project.querySelector(".project-details");
   const toShow = project.querySelectorAll(".toShow");
   const closeBtn = project.querySelector(".closeDetails");
   let delay;
 
   title.addEventListener("click", () => {
-    delay = 1;
-    gsap.to(details, {
-      duration: 1,
-      display: "block",
-      height: window.innerWidth > 990 ? 440 : percentToPixel(details, 150),
-      padding: window.innerWidth > 990 ? 20 : 0,
-    });
+    display(delay, details, toShow);
+  });
 
-    for (let i = 0; i < toShow.length; i++) {
-      const element = toShow[i];
-
-      gsap.to(element, {
-        duration: 0.5,
-        delay,
-        display: "block",
-        opacity: 1,
-        y: 0,
-      });
-
-      delay += 0.1;
-    }
+  img.addEventListener("click", () => {
+    display(delay, details, toShow);
   });
 
   closeBtn.addEventListener("click", () => {
