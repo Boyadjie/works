@@ -150,6 +150,7 @@ footer {
   font-size: 55px;
   line-height: 0.9;
   text-transform: uppercase;
+  text-decoration: underline;
 }
 #projects .projects-list section > div.content > div:not(.project-details) h3 {
   font-size: 18px;
@@ -289,6 +290,7 @@ footer {
     font-size: 75px;
     line-height: 0.9;
     text-transform: uppercase;
+    text-decoration: none;
   }
   #projects .projects-list section > div.content > div:not(.project-details) h3 {
     font-size: 20px;
